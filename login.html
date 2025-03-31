@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       /* Resetando margin e padding para todos os elementos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Corpo da página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8e1f4; /* Fundo rosa claro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Contêiner principal para login */
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Título */
+        h2 {
+            font-size: 36px;
+            color: #e91e63; /* Rosa forte */
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para inputs e botão */
+        input, button {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #f1f1f1;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        input {
+            background-color: #fff;
+        }
+
+        button {
+            background-color: #e91e63; /* Rosa forte */
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d81b60; /* Rosa escuro */
+        }
+
+        /* Link */
+        a {
+            color: #e91e63;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Efeitos de transição */
+        input:focus, button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            <label for="username">Usuário:</label>
+            <input type="text" name="txtUsername" id="username" required>
+            <br>
+            <label for="password">Senha:</label>
+            <input type="password" name="txtPassword" id="password" required>
+            <br>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8e1f4;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #e91e63;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100%;
+            box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #d81b60;
+        }
+
+        .sidebar .submenu {
+            padding-left: 20px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .main-content1 {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #e91e63;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .boxes-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .box h3 {
+            font-size: 24px;
+            color: #e91e63;
+            margin-bottom: 15px;
+        }
+
+        .box button {
+            background-color: #e91e63;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .box button:hover {
+            background-color: #d81b60;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Lateral -->
+    <div class="sidebar">
+        <h2>Sistema</h2>
+        <a href="principal.html">Home</a>
+        
+        <!-- Menu Clientes -->
+        <div class="submenu">
+            <a href="clientes.html">Clientes</a>
+            <a href="#">Cadastro</a>
+            <a href="#">Consulta</a>
+        </div>
+
+        <a href="#">Produtos</a>
+        <a href="#">Relatório</a>
+    </div>
+
+    <div class="main-content1">
+        <h1>Bem-vindo à Página Principal</h1>
+        <p>Escolha uma opção no menu lateral para acessar o sistema.</p>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <div class="boxes-container">
+            <div class="box">
+                <h3>Clientes Ativos</h3>
+                <button onclick="window.location.href='clientes.html'">Gerenciar Clientes</button>
+            </div>
+            <div class="box">
+                <h3>Produtos Cadastrados</h3>
+                <button>Gerenciar Produtos</button>
+            </div>
+            <div class="box">
+                <h3>Captações Pendentes</h3>
+                <button>Gerenciar Captação</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Verificação de token para páginas protegidas
+        document.addEventListener('DOMContentLoaded', function() {
+            const protectedPages = ['principal.html', 'clientes.html'];
+            if (protectedPages.some(page => window.location.pathname.includes(page))) {
+                if (!document.cookie.includes('token')) {
+                    window.location.href = 'login.html';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
