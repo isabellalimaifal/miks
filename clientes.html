@@ -156,5 +156,64 @@
             </tbody>
         </table>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btnAdd = document.querySelector(".btn-add");
+            const tbody = document.getElementById("clientes-lista");
+
+            let idCounter = 3; // Começa com 3 porque já temos 2 clientes
+
+            // Adicionar novo cliente
+            btnAdd.addEventListener("click", function() {
+                const nome = prompt("Digite o nome do cliente:");
+                const email = prompt("Digite o e-mail do cliente:");
+
+                if (nome && email) {
+                    const newRow = document.createElement("tr");
+                    newRow.innerHTML = `
+                        <td>${idCounter}</td>
+                        <td>${nome}</td>
+                        <td>${email}</td>
+                        <td>
+                            <button class="btn btn-edit">Editar</button>
+                            <button class="btn btn-delete">Excluir</button>
+                        </td>
+                    `;
+
+                    tbody.appendChild(newRow);
+                    idCounter++;
+
+                    addEventListeners(newRow);
+                }
+            });
+
+            // Adicionar eventos aos botões de editar e excluir
+            function addEventListeners(row) {
+                const btnEdit = row.querySelector(".btn-edit");
+                const btnDelete = row.querySelector(".btn-delete");
+
+                // Editar cliente
+                btnEdit.addEventListener("click", function() {
+                    const newName = prompt("Novo nome:", row.children[1].textContent);
+                    const newEmail = prompt("Novo e-mail:", row.children[2].textContent);
+
+                    if (newName && newEmail) {
+                        row.children[1].textContent = newName;
+                        row.children[2].textContent = newEmail;
+                    }
+                });
+
+                // Excluir cliente
+                btnDelete.addEventListener("click", function() {
+                    if (confirm("Tem certeza que deseja excluir este cliente?")) {
+                        row.remove();
+                    }
+                });
+            }
+
+            // Adicionar eventos para os clientes já existentes
+            document.querySelectorAll("tbody tr").forEach(addEventListeners);
+        });
+    </script>
 </body>
 </html>
