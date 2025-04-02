@@ -132,7 +132,7 @@
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="clientes-lista">
                 <!-- Exemplo de cliente -->
                 <tr>
                     <td>1</td>
@@ -160,8 +160,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             const btnAdd = document.querySelector(".btn-add");
             const tbody = document.getElementById("clientes-lista");
-
-            let idCounter = 3; // Começa com 3 porque já temos 2 clientes
+            let idCounter = 3; // Começa no 3 porque já existem 2 clientes
 
             // Adicionar novo cliente
             btnAdd.addEventListener("click", function() {
@@ -180,9 +179,10 @@
                         </td>
                     `;
 
-                    tbody.appendChild(newRow);
+                    tbody.appendChild(newRow); // Agora adiciona corretamente a linha à tabela
                     idCounter++;
 
+                    // Adiciona eventos aos novos botões
                     addEventListeners(newRow);
                 }
             });
@@ -211,8 +211,8 @@
                 });
             }
 
-            // Adicionar eventos para os clientes já existentes
-            document.querySelectorAll("tbody tr").forEach(addEventListeners);
+            // Adicionar eventos para os clientes já existentes na tabela
+            document.querySelectorAll("#clientes-lista tr").forEach(addEventListeners);
         });
     </script>
 </body>
